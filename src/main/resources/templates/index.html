@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{estilos/EstiloWeb.css}">
+         <!-- Fuente caligráfica -->
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+        <title>Deco Mood</title>
+    </head>
+    <body>
+        <div>
+            <div class="caja">
+                <a th:href="@{/Formulario}"><button>Contáctanos</button></a><br>
+                <a th:href="@{/imagenes/catalogo.pdf}"><button>Catálogo</button></a><br>
+                <a href="https://www.instagram.com/deco_mood.ccl/" target="_blank">
+                    <button>
+                        Síguenos
+                        <img src="/imagenes/instagram.png" alt="Instagram" class="insta">
+                    </button>
+                </a>
+            </div>
+            <h1>Deco Mood</h1>
+        </div>
+        
+       
+        <div class="fotos">
+            <img src="imagenes/imagen2.PNG" alt="">
+            <img src="imagenes/imagen3.PNG" alt="">
+            <img src="imagenes/imagen1.PNG" alt="">
+        </div>
+        <footer>
+            <h3>Deco Mood CCL</h3>
+        </footer>
+    </body>
+</html>

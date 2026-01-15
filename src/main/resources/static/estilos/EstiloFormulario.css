@@ -1,0 +1,56 @@
+body{
+    background-image: url('../imagenes/fondo_formulario.jpeg');
+    background-size: cover;
+   background-position: center;
+   height: 100vh;
+
+}
+.boton{
+    width: 250px; /*anchura del boton*/
+    background-image: url('../imagenes/imagen_madera.jpg') ;
+    color:#381d0f;
+    border:none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor:pointer; 
+    margin: 10px; /* espacio para los botones */
+}
+
+form{
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    width:80%;
+    margin: 30px;
+    max-width: 600px;
+    min-width: 300px;
+    
+}
+
+label{
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    color:#381d0f;
+}
+
+input, textarea{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color:#381d0f;
+    box-sizing: border-box;
+}
+
+.contenedor{
+    padding-top: 100px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-family: Arial, sans-serif;
+  
+}

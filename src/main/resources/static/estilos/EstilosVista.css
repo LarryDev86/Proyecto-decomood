@@ -1,0 +1,30 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background-image: url('../imagenes/fondo_formulario.jpeg');
+    background-size: cover;
+    background-position: center;
+    /*Definimos con color las letras dentro del body*/
+    font-size: 32px;
+    color: #381d0f;
+    margin-bottom: 15px;
+}
+.contenedor-alerta {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center; /* centra horizontal */
+    align-items: center;     /* centra vertical */
+
+    z-index: 1050; /* por encima del contenido */
+}
+
+

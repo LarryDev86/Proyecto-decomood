@@ -1,0 +1,130 @@
+
+h1,h3{
+    
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italica;
+    letter-spacing: 2px;
+    color:#381d0f;
+    text-shadow: 
+        1px 1px 0px rgba(0,0,0,0.6),
+        3px 3px 4px rgba(0,0,0,0.35);
+}
+
+
+/* Fondo adaptable */
+body {
+    background-image: url('../imagenes/imagen_hormigon2.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor principal del header */
+.encabezado {
+    display: flex;
+    align-items: center;
+}
+.btn-ig {
+    background-image: url('../imagenes/imagen_madera.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #381d0f;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center; 
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Imagen del icono dentro del botón */
+.insta {
+    width: 28px;   /* ajusta el tamaño aquí */
+    height: 28px;
+    border-radius: 8px; /* redondea esquinas del icono */
+    object-fit: cover; /* evita deformación */
+}
+
+/* Título centrado */
+h1 {
+    padding-top: 20px;
+    font-size: 6vw;
+    color: #381d0f;
+    text-align: center;
+    margin: 0;
+}
+
+/* Botones alineados a la izquierda */
+.caja {
+    padding-left: 25px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Botón con imagen de fondo */
+button {
+    width: 250px;
+    background-image: url('../imagenes/imagen_madera.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #381d0f;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Contenedor de imágenes */
+.fotos {
+    width: 100%;
+    text-align: center;
+    margin-top: 8vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/*imagenes con relibe*/
+.fotos img {
+    width: 30%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* sombra para el relieve */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* animación suave */
+}
+
+/* ========= RESPONSIVE ========= */
+
+@media (max-width: 800px) {
+    .encabezado {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    h1 {
+        font-size: 12vw;
+    }
+
+    .caja {
+        align-items: center;
+    }
+
+    button {
+        width: 75%;
+        max-width: 400px;
+    }
+
+    .fotos img {
+        width: 80%;
+        max-width: 260px;
+    }
+}
