@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar Presupuesto - DecoMood</title>
+    <link rel="stylesheet" th:href="@{/estilos/EstiloFormulario.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<div class="form-page-container">
+
+    <div class="form-sidebar">
+        <div class="sidebar-overlay"></div>
+        <img class="sidebar-bg" th:src="@{/imagenes/armario.png}" alt="DecoMood Taller">
+
+        <div class="sidebar-content">
+            <a th:href="@{/}" class="back-home-btn">
+                <i class="fa-solid fa-arrow-left"></i> Volver al inicio
+            </a>
+            <div class="sidebar-text">
+                <span class="sidebar-subtitle">PROYECTOS A MEDIDA</span>
+                <h2>Cuéntanos tu idea y la fabricamos</h2>
+                <p>Cada hogar es un mundo. Escríbenos detallando qué pieza necesitas, tus medidas o materiales preferidos, y nuestro equipo de artesanos diseñará un presupuesto exclusivo para ti.</p>
+            </div>
+            <div class="sidebar-footer">
+                <span><i class="fa-regular fa-envelope"></i> info@decomood.com</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-body-wrapper">
+        <div class="form-inner-container">
+            <div class="form-header">
+                <h1>Solicitud de Presupuesto</h1>
+                <p>Por favor, completa los siguientes datos y nos pondremos en contacto contigo en un plazo de 24-48 horas.</p>
+            </div>
+
+            <form th:action="@{/Formulario}" method="POST" class="custom-form">
+
+                <div class="form-group-row">
+                    <div class="form-input-group">
+                        <label for="nombre">Nombre completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+
+                    <div class="form-input-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group-row">
+                    <div class="form-input-group">
+                        <label for="telefono">Teléfono de contacto</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="600 000 000">
+                    </div>
+
+                    <div class="form-input-group">
+                        <label for="tipoMueble">¿Qué pieza te interesa?</label>
+                        <div class="select-wrapper">
+                            <select id="tipoMueble" name="tipoMueble" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="mesa">Mesa de Comedor / Centro</option>
+                                <option value="dormitorio">Estructura de Cama / Cabecero</option>
+                                <option value="armario">Armario o Cajonera</option>
+                                <option value="espejo">Espejo a medida</option>
+                                <option value="otro">Otro proyecto personalizado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-input-group">
+                    <label for="detalles">Cuéntanos más sobre tu proyecto (Medidas, madera, ideas...)</label>
+                    <textarea id="detalles" name="detalles" rows="5" placeholder="Me gustaría una mesa de roble macizo de 180x90 cm con acabado natural..." required></textarea>
+                </div>
+
+                <div class="form-checkbox-group">
+                    <input type="checkbox" id="privacidad" name="privacidad" required>
+                    <label for="privacidad">Acepto la política de privacidad y condiciones de uso.</label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">
+                        Enviar solicitud <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

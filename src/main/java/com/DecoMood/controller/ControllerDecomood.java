@@ -48,5 +48,10 @@ public class ControllerDecomood {
         return true;
     }
 
+    @GetMapping("/presupuesto")
+    public String hacerPresupuesto(){
+        return "/formPresupuesto";
+    }
+
 }
 

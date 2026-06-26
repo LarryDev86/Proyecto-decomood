@@ -1,56 +1,311 @@
-body{
-    background-image: url('../imagenes/fondo_formulario.jpeg');
-    background-size: cover;
-   background-position: center;
-   height: 100vh;
-
-}
-.boton{
-    width: 250px; /*anchura del boton*/
-    background-image: url('../imagenes/imagen_madera.jpg') ;
-    color:#381d0f;
-    border:none;
-    border-radius: 25px;
-    padding: 12px 25px;
-    font-size: 16px;
-    cursor:pointer; 
-    margin: 10px; /* espacio para los botones */
+/*=====================================================
+                    VARIABLES
+=====================================================*/
+:root {
+    --bg-light: #FDFBF7;
+    --text-dark: #1A1A1A;
+    --text-gray: #777777;
+    --border-color: #E2DFD8;
+    --white: #ffffff;
+    --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-form{
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-    width:80%;
-    margin: 30px;
-    max-width: 600px;
-    min-width: 300px;
-    
-}
-
-label{
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 20px;
-    color:#381d0f;
-}
-
-input, textarea{
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    font-size: 18px;
-    color:#381d0f;
+/*=====================================================
+                    RESET
+=====================================================*/
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-.contenedor{
-    padding-top: 100px;
-    height: 100vh;
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* Contenedor principal de pantalla completa ocupando dos columnas */
+.form-page-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/*=====================================================
+        COLUMNA IZQUIERDA: SIDEBAR VISUAL
+=====================================================*/
+.form-sidebar {
+    position: relative;
+    width: 35%; /* Ancho elegante para el lateral inspirador */
+    min-width: 380px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.sidebar-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 2;
+}
+
+.sidebar-content {
+    position: relative;
+    z-index: 3;
+    color: var(--white);
+    padding: 50px 12%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.back-home-btn {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    text-decoration: none;
+}
+
+.back-home-btn:hover {
+    opacity: 1;
+}
+
+.sidebar-text .sidebar-subtitle {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.sidebar-text h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.sidebar-text p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.sidebar-footer {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+/*=====================================================
+        COLUMNA DERECHA: EL FORMULARIO
+=====================================================*/
+.form-body-wrapper {
+    width: 65%;
     display: flex;
     justify-content: center;
-    align-content: center;
-    font-family: Arial, sans-serif;
-  
+    align-items: center;
+    padding: 60px 8%;
+    background-color: var(--bg-light);
+}
+
+.form-inner-container {
+    width: 100%;
+    max-width: 680px;
+}
+
+.form-header {
+    margin-bottom: 45px;
+}
+
+.form-header h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.form-header p {
+    color: var(--text-gray);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Estructura de filas e inputs */
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-group-row {
+    display: flex;
+    gap: 30px;
+}
+
+.form-input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-input-group label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* Minimalist Inputs: Estilo sofisticado sin bordes toscos */
+.form-input-group input[type="text"],
+.form-input-group input[type="email"],
+.form-input-group input[type="tel"],
+.form-input-group textarea,
+.form-input-group select {
+    width: 100%;
+    padding: 14px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-input-group textarea {
+    border: 1px solid var(--border-color);
+    padding: 14px;
+    resize: none;
+    margin-top: 5px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.form-input-group input:focus,
+.form-input-group textarea:focus,
+.form-input-group select:focus {
+    border-color: var(--text-dark);
+}
+
+/* Estilos para el Select */
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: '\f107';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 5px;
+    bottom: 14px;
+    font-size: 12px;
+    color: var(--text-gray);
+    pointer-events: none;
+}
+
+.form-input-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+/* Checkbox de Privacidad */
+.form-checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.form-checkbox-group input[type="checkbox"] {
+    accent-color: var(--text-dark);
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.form-checkbox-group label {
+    font-size: 13px;
+    color: var(--text-gray);
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+/* Botón de envío */
+.form-actions {
+    margin-top: 20px;
+}
+
+.btn-submit {
+    background-color: var(--text-dark);
+    color: var(--white);
+    border: none;
+    padding: 18px 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/*=====================================================
+                    RESPONSIVE
+=====================================================*/
+@media (max-width: 900px) {
+    .form-page-container {
+        flex-direction: column;
+    }
+    .form-sidebar {
+        width: 100%;
+        min-width: 100%;
+        height: auto;
+    }
+    .sidebar-content {
+        padding: 40px 6%;
+        gap: 40px;
+    }
+    .form-body-wrapper {
+        width: 100%;
+        padding: 50px 6%;
+    }
+    .form-group-row {
+        flex-direction: column;
+        gap: 30px;
+    }
 }

@@ -1,37 +1,231 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" th:href="@{estilos/EstiloWeb.css}">
-         <!-- Fuente caligráfica -->
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
-        <title>Deco Mood</title>
-    </head>
-    <body>
-        <div>
-            <div class="caja">
-                <a th:href="@{/Formulario}"><button>Contáctanos</button></a><br>
-                <a th:href="@{/imagenes/catalogo.pdf}"><button>Catálogo</button></a><br>
-                <a href="https://www.instagram.com/deco_mood.ccl/" target="_blank">
-                    <button>
-                        Síguenos
-                        <img src="/imagenes/instagram.png" alt="Instagram" class="insta">
-                    </button>
-                </a>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecoMood</title>
+    <meta name="description" content="Muebles artesanales fabricados en madera natural.">
+    <link rel="stylesheet" th:href="@{/estilos/EstiloWeb.css}">
+    <!-- Con esto hacemos que se ajuste mejor en los moviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">DECOMOOD</div>
+
+    <nav class="nav-desktop">
+        <a href="#">Inicio</a>
+        <a href="#colecciones">Colecciones</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="https://wa.me/34628293830" target="_blank">Contacto</a>
+        <a class="catalogo catalogo-mobile" th:href="@{/imagenes/catalogo.pdf}" target="_blank">Catálogo</a>
+    </nav>
+
+    <div class="header-actions">
+        <div class="menu-mobile">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div>
+</header>
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <span class="subtitle">MUEBLES ARTESANALES</span>
+        <h1>Creamos hogares<br>con alma</h1>
+        <p>Diseñamos y fabricamos muebles de madera natural con procesos artesanales y materiales sostenibles.</p>
+
+        <div class="hero-buttons">
+            <a href="#colecciones" class="btn-discover">Descubrir colección</a>
+        </div>
+    </div>
+
+    <div class="hero-footer">
+        <div class="hero-slider-indicators">
+            <span class="active">01</span>
+            <span>02</span>
+            <span>03</span>
+        </div>
+        <div class="hero-video-link">
+            <span class="play-icon"><i class="fa-solid fa-play"></i></span>
+            <span>Ver el proceso</span>
+        </div>
+    </div>
+</section>
+
+<section class="collections" id="colecciones">
+    <div class="section-header">
+        <div class="header-text">
+            <span class="section-subtitle">COLECCIONES</span>
+            <h2>Explora nuestras colecciones</h2>
+        </div>
+        <div class="slider-arrows">
+            <button class="arrow-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+
+    <div class="collections-grid">
+        <a href="#" class="collection-card">
+            <div class="card-img-wrapper">
+                <img th:src="@{/imagenes/mesa-comedor.png}" alt="Mesas">
+                <div class="card-overlay"></div>
             </div>
-            <h1>Deco Mood</h1>
+            <div class="card-content">
+                <span>Colección</span>
+                <h3>Mesas</h3>
+                <div class="card-footer">
+                    <span class="discover-text">Descubrir</span>
+                    <span class="arrow-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="collection-card">
+            <div class="card-img-wrapper">
+                <img th:src="@{/imagenes/dormitorio.png}" alt="Dormitorios">
+                <div class="card-overlay"></div>
+            </div>
+            <div class="card-content">
+                <span>Colección</span>
+                <h3>Dormitorios</h3>
+                <div class="card-footer">
+                    <span class="discover-text">Descubrir</span>
+                    <span class="arrow-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+        </a>
+
+        <a href="#" class="collection-card">
+            <div class="card-img-wrapper">
+                <img th:src="@{/imagenes/espejo.png}" alt="Espejos">
+                <div class="card-overlay"></div>
+            </div>
+            <div class="card-content">
+                <span>Colección</span>
+                <h3>Espejos</h3>
+                <div class="card-footer">
+                    <span class="discover-text">Descubrir</span>
+                    <span class="arrow-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<section class="about-section" id="nosotros">
+    <div class="about-container">
+        <div class="about-image">
+            <img th:src="@{/imagenes/armario.png}" alt="Artesanía DecoMood">
         </div>
-        
-       
-        <div class="fotos">
-            <img src="imagenes/imagen2.PNG" alt="">
-            <img src="imagenes/imagen3.PNG" alt="">
-            <img src="imagenes/imagen1.PNG" alt="">
+        <div class="about-content">
+            <span class="section-subtitle">DECOMOOD</span>
+            <h2>Artesanía, naturaleza<br>y diseño.</h2>
+            <p class="about-text-lead">Creemos en la belleza de lo natural, en el valor de lo hecho a mano y en la importancia de crear muebles que cuenten historias.</p>
+            <p class="about-text-sub">Cada pieza es única, trabajando con dedicación por artesanos expertos que cuidan cada detalle.</p>
+            <a href="#" class="btn-outline">Conoce nuestra historia</a>
         </div>
-        <footer>
-            <h3>Deco Mood CCL</h3>
-        </footer>
-    </body>
+    </div>
+</section>
+
+<section class="products-section">
+    <div class="section-header">
+        <div class="header-text">
+            <span class="section-subtitle">PRODUCTOS DESTACADOS</span>
+            <h2>Piezas que enamoran</h2>
+        </div>
+        <div class="slider-arrows">
+            <button class="arrow-btn"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+
+    <div class="products-grid">
+        <div class="product-card">
+            <div class="product-img-wrapper">
+                <img th:src="@{/imagenes/banco.png}" alt="Banco de madera">
+            </div>
+            <div class="product-info">
+                <div class="product-title-row">
+                    <h3>Banco rústico natural</h3>
+                    <span class="product-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+                <span class="product-price">240,00 €</span>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-wrapper">
+                <img th:src="@{/imagenes/cajon.png}" alt="Mueble cajonera">
+            </div>
+            <div class="product-info">
+                <div class="product-title-row">
+                    <h3>Mueble Auxiliar Cajón</h3>
+                    <span class="product-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+                <span class="product-price">310,00 €</span>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-wrapper">
+                <img th:src="@{/imagenes/cama-infantil.png}" alt="Cama infantil">
+            </div>
+            <div class="product-info">
+                <div class="product-title-row">
+                    <h3>Cama Infantil Nordic</h3>
+                    <span class="product-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+                <span class="product-price">580,00 €</span>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img-wrapper">
+                <img th:src="@{/imagenes/burra.png}" alt="Burra para ropa">
+            </div>
+            <div class="product-info">
+                <div class="product-title-row">
+                    <h3>Burra Colgador Ropa</h3>
+                    <span class="product-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+                <span class="product-price">185,00 €</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-banner">
+    <div class="cta-overlay"></div>
+    <img class="cta-bg-img" th:src="@{/imagenes/dormitorio.png}" alt="Proyectos a medida">
+
+    <div class="cta-container">
+        <button class="cta-arrow-btn left"><i class="fa-solid fa-arrow-left"></i></button>
+
+        <div class="cta-content">
+            <span class="cta-subtitle">HACEMOS REALIDAD TUS IDEAS</span>
+            <h2>Personalizamos cada proyecto a tu medida</h2>
+            <a th:href="@{/presupuesto}" class="btn-cta">Solicitar presupuesto</a>
+        </div>
+
+        <button class="cta-arrow-btn right"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    <div class="cta-dots">
+        <span class="dot"></span>
+        <span class="dot active"></span>
+    </div>
+</section>
+<!-- copyryde -->
+<section class="cta-banner-pie">
+    <small>
+        © 2026 Deco_mood.ccl   -   Todos los derechos reservados.
+    </small>
+</section>
+<script th:src="@{/js/script.js}"></script>
+</body>
 </html>
