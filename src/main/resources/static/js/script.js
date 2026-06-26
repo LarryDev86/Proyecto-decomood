@@ -37,3 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+//Esto hace que desaparezca en 3 seg la alerta
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        const mensaje = document.getElementById("mensaje");
+        if (mensaje) {
+            mensaje.style.display = "none";
+        }
+    }, 3000);
+});

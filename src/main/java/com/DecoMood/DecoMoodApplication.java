@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class
+
 DecoMoodApplication {
 
 	public static void main(String[] args) {

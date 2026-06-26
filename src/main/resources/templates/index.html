@@ -6,8 +6,7 @@
     <title>DecoMood</title>
     <meta name="description" content="Muebles artesanales fabricados en madera natural.">
     <link rel="stylesheet" th:href="@{/estilos/EstiloWeb.css}">
-    <!-- Con esto hacemos que se ajuste mejor en los moviles -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -17,15 +16,13 @@
 
 <header class="header">
     <div class="logo">DECOMOOD</div>
-
     <nav class="nav-desktop">
         <a href="#">Inicio</a>
         <a href="#colecciones">Colecciones</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="https://wa.me/34628293830" target="_blank">Contacto</a>
-        <a class="catalogo catalogo-mobile" th:href="@{/imagenes/catalogo.pdf}" target="_blank">Catálogo</a>
+        <a href="https://www.instagram.com/deco_mood.ccl?igsh=dGM1cjFsczVqejJ1">Síguenos</a>
+        <a href="https://wa.me/34603636742" target="_blank">Contacto</a>
+        <a class="catalogo catalogo-mobile" th:href="@{/imagenes/catalogo.pdf}">Catálogo</a>
     </nav>
-
     <div class="header-actions">
         <div class="menu-mobile">
             <i class="fa-solid fa-bars"></i>
@@ -34,28 +31,14 @@
 </header>
 <section class="hero">
     <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-        <span class="subtitle">MUEBLES ARTESANALES</span>
-        <h1>Creamos hogares<br>con alma</h1>
-        <p>Diseñamos y fabricamos muebles de madera natural con procesos artesanales y materiales sostenibles.</p>
-
-        <div class="hero-buttons">
-            <a href="#colecciones" class="btn-discover">Descubrir colección</a>
+        <div class="hero-content">
+            <span class="subtitle">MUEBLES ARTESANALES</span>
+            <h1>Creamos hogares<br>con alma</h1>
+            <p>Diseñamos y fabricamos muebles de madera natural con procesos artesanales y materiales sostenibles.</p>
+            <div class="hero-buttons">
+                <a href="#colecciones" class="btn-discover">Descubrir colección</a>
+            </div>
         </div>
-    </div>
-
-    <div class="hero-footer">
-        <div class="hero-slider-indicators">
-            <span class="active">01</span>
-            <span>02</span>
-            <span>03</span>
-        </div>
-        <div class="hero-video-link">
-            <span class="play-icon"><i class="fa-solid fa-play"></i></span>
-            <span>Ver el proceso</span>
-        </div>
-    </div>
 </section>
 
 <section class="collections" id="colecciones">
