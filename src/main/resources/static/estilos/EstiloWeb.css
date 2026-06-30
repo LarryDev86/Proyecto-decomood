@@ -942,7 +942,7 @@ a {
 
     .modal-content{
         width:95%;
-        max-height:90vh;
+        max-height:95vh;
         overflow-y:auto;
 
         display:flex;
@@ -951,7 +951,7 @@ a {
 
     .modal-galeria{
         width:100%;
-        padding:20px;
+        padding:30px;
         display:flex;
         flex-direction:column;
         gap:20px;

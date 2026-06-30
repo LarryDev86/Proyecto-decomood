@@ -12,7 +12,7 @@ public class Stock {
     @Column(name="nombre")
     private String nombre;
     @Column(name ="precio")
-    private double precio;
+    private int precio;
     private String imagen;
 
     public Stock() {
@@ -34,11 +34,11 @@ public class Stock {
         this.nombre = nombre;
     }
 
-    public double getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 

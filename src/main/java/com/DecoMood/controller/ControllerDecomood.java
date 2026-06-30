@@ -43,7 +43,8 @@ public class ControllerDecomood {
     }
 
     @GetMapping("/presupuesto")
-    public String hacerPresupuesto(){
+    public String hacerPresupuesto(Model modelo){
+        modelo.addAttribute("muebles",strockService.listarStocks());
         return "/formPresupuesto";
     }
 

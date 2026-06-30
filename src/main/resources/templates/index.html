@@ -6,14 +6,12 @@
     <title>DecoMood</title>
     <meta name="description" content="Muebles artesanales fabricados en madera natural.">
     <link rel="stylesheet" th:href="@{/estilos/EstiloWeb.css}">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-
 <header class="header">
     <div class="logo">DECOMOOD</div>
     <nav class="nav-desktop">
@@ -40,7 +38,6 @@
             </div>
         </div>
 </section>
-
 <section class="collections" id="colecciones">
     <div class="section-header">
         <div class="header-text">
@@ -56,7 +53,6 @@
             </button>
         </div>
     </div>
-
     <div class="collections-grid">
         <a th:each="coleccion:${colecciones}" href="#" class="collection-card">
             <div class="card-img-wrapper">
@@ -66,17 +62,10 @@
             <div class="card-content">
                 <span>Colección</span>
                 <h3 th:text="${coleccion.nombre}"></h3>
-                <div class=card-footer>
-                    <span class="discover-text">Descubrir</span>
-                    <span class="arrow-icon">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </span>
-                </div>
             </div>
         </a>
     </div>
 </section>
-
 <section class="about-section" id="nosotros">
     <div class="about-container">
         <div class="about-image">
@@ -93,7 +82,6 @@
         </div>
     </div>
 </section>
-
 <section class="products-section">
     <div class="section-header">
         <div class="header-text">
@@ -109,7 +97,6 @@
             </button>
         </div>
     </div>
-
     <div class="products-grid">
         <a th:each="coleccion:${colecciones}" href="#" class="product-card">
             <div class="product-img-wrapper">
@@ -124,32 +111,26 @@
                 </div>
                 <div class="section-subtitle">
                     <h3 th:text="${coleccion.nombre}"></h3>
-                    <h3 th:text="${coleccion.precio}+'€'"></h3>
+                    <div th:if="${coleccion.precio == 0}">
+                        <h3 class="cta-subtitle">Desde-Según medidas</h3>
+                    </div>
+                    <h3 class="cta-subtitle" th:if="${coleccion.precio != 0}"
+                        th:text="'Desde-'+${coleccion.precio}+'€'"></h3>
                 </div>
             </div>
         </a>
 
     </div>
 </section>
-
 <section class="cta-banner">
     <div class="cta-overlay"></div>
     <img class="cta-bg-img" th:src="@{/imagenes/dormitorio.png}" alt="Proyectos a medida">
-
     <div class="cta-container">
-        <button class="cta-arrow-btn left"><i class="fa-solid fa-arrow-left"></i></button>
-
         <div class="cta-content">
             <span class="cta-subtitle">HACEMOS REALIDAD TUS IDEAS</span>
             <h2>Personalizamos cada proyecto a tu medida</h2>
             <a th:href="@{/presupuesto}" class="btn-cta">Solicitar presupuesto</a>
         </div>
-
-        <button class="cta-arrow-btn right"><i class="fa-solid fa-arrow-right"></i></button>
-    </div>
-    <div class="cta-dots">
-        <span class="dot"></span>
-        <span class="dot active"></span>
     </div>
 </section>
 <!-- copyryde -->
@@ -158,10 +139,8 @@
         © 2026 Deco_mood.ccl   -   Todos los derechos reservados.
     </small>
 </section>
-
 <!--------------------------------------- Nuestra Historia --------------------------------------->
 <div id="modalHistoria" class="modal">
-
     <div class="modal-content">
         <span class="cerrar">&times;</span>
         <div class="modal-galeria">
@@ -184,7 +163,6 @@
         <div class="modal-galeria">
             <img src="/imagenes/fundadores-2.png" alt="Proceso artesanal">
         </div>
-
     </div>
 </div>
 <!--------------------------------------- Fin Nuestra Historia --------------------------------------->

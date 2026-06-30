@@ -17,7 +17,7 @@
 <div class="form-page-container">
     <div class="form-sidebar">
         <div class="sidebar-overlay"></div>
-        <img class="sidebar-bg" th:src="@{/imagenes/armario.png}" alt="DecoMood Taller">
+        <img class="sidebar-bg" th:src="@{/imagenes/comoda-dormitorio.png}" alt="DecoMood Taller">
 
         <div class="sidebar-content">
             <a th:href="@{/}" class="back-home-btn">
@@ -52,7 +52,7 @@
 
                     <div class="form-input-group">
                         <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                        <input type="email" id="email" name="email" placeholder="info@decomood.com" required>
                     </div>
                 </div>
 
@@ -67,11 +67,10 @@
                         <div class="select-wrapper">
                             <select id="tipoMueble" name="stock.id" required>
                                 <option value="" disabled selected>Selecciona una opción</option>
-                                <option value="1">Mesa de Comedor / Centro</option>
-                                <option value="2">Estructura de Cama / Cabecero</option>
-                                <option value="3">Armario o Cajonera</option>
-                                <option value="4">Espejo a medida</option>
-                                <option value="5">Otro proyecto personalizado</option>
+                                <option th:each="mueble : ${muebles}"
+                                        th:value="${mueble.id}"
+                                        th:text="${mueble.nombre}">
+                                </option>
                             </select>
                         </div>
                     </div>
