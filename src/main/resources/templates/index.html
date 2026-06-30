@@ -48,8 +48,12 @@
             <h2>Explora nuestras colecciones</h2>
         </div>
         <div class="slider-arrows">
-            <button class="arrow-btn"><i class="fa-solid fa-arrow-left"></i></button>
-            <button class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></button>
+            <button class="arrow-btn prev-btn">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="arrow-btn next-btn">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
         </div>
     </div>
 
@@ -83,7 +87,9 @@
             <h2>Artesanía, naturaleza<br>y diseño.</h2>
             <p class="about-text-lead">Creemos en la belleza de lo natural, en el valor de lo hecho a mano y en la importancia de crear muebles que cuenten historias.</p>
             <p class="about-text-sub">Cada pieza es única, trabajando con dedicación por artesanos expertos que cuidan cada detalle.</p>
-            <a href="#" class="btn-outline">Conoce nuestra historia</a>
+            <a href="#" class="btn-outline"  id="abrirHistoria">
+                Conoce nuestra historia
+            </a>
         </div>
     </div>
 </section>
@@ -95,63 +101,34 @@
             <h2>Piezas que enamoran</h2>
         </div>
         <div class="slider-arrows">
-            <button class="arrow-btn"><i class="fa-solid fa-arrow-left"></i></button>
-            <button class="arrow-btn"><i class="fa-solid fa-arrow-right"></i></button>
+            <button class="arrow-btn products-prev">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="arrow-btn products-next">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
         </div>
     </div>
 
     <div class="products-grid">
-        <div class="product-card">
+        <a th:each="coleccion:${colecciones}" href="#" class="product-card">
             <div class="product-img-wrapper">
-                <img th:src="@{/imagenes/banco.png}" alt="Banco de madera">
+                <img th:src="@{'/imagenes/'+${coleccion.imagen}}" th:alt="${coleccion.nombre}">
             </div>
             <div class="product-info">
                 <div class="product-title-row">
-                    <h3>Banco rústico natural</h3>
-                    <span class="product-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                    <h3 th:alt="${coleccion.nombre}"></h3>
+                    <span class="product-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
                 </div>
-                <span class="product-price">240,00 €</span>
+                <div class="section-subtitle">
+                    <h3 th:text="${coleccion.nombre}"></h3>
+                    <h3 th:text="${coleccion.precio}+'€'"></h3>
+                </div>
             </div>
-        </div>
+        </a>
 
-        <div class="product-card">
-            <div class="product-img-wrapper">
-                <img th:src="@{/imagenes/cajon.png}" alt="Mueble cajonera">
-            </div>
-            <div class="product-info">
-                <div class="product-title-row">
-                    <h3>Mueble Auxiliar Cajón</h3>
-                    <span class="product-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-                <span class="product-price">310,00 €</span>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-img-wrapper">
-                <img th:src="@{/imagenes/cama-infantil.png}" alt="Cama infantil">
-            </div>
-            <div class="product-info">
-                <div class="product-title-row">
-                    <h3>Cama Infantil Nordic</h3>
-                    <span class="product-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-                <span class="product-price">580,00 €</span>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="product-img-wrapper">
-                <img th:src="@{/imagenes/burra.png}" alt="Burra para ropa">
-            </div>
-            <div class="product-info">
-                <div class="product-title-row">
-                    <h3>Burra Colgador Ropa</h3>
-                    <span class="product-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-                <span class="product-price">185,00 €</span>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -181,6 +158,36 @@
         © 2026 Deco_mood.ccl   -   Todos los derechos reservados.
     </small>
 </section>
+
+<!--------------------------------------- Nuestra Historia --------------------------------------->
+<div id="modalHistoria" class="modal">
+
+    <div class="modal-content">
+        <span class="cerrar">&times;</span>
+        <div class="modal-galeria">
+            <img src="/imagenes/fundadores.png" alt="Fundadores">
+        </div>
+        <div class="modal-texto">
+            <h2>Nuestra historia</h2>
+            <p>
+                DecoMood nació de la pasión por la madera y el diseño artesanal.
+                Lo que comenzó como un pequeño taller familiar se convirtió en un
+                proyecto donde cada mueble se fabrica con dedicación y materiales
+                naturales.
+            </p>
+            <p>
+                Nuestro objetivo siempre ha sido crear piezas únicas,
+                alejándonos de la fabricación en serie y cuidando cada detalle
+                del proceso.
+            </p>
+        </div>
+        <div class="modal-galeria">
+            <img src="/imagenes/fundadores-2.png" alt="Proceso artesanal">
+        </div>
+
+    </div>
+</div>
+<!--------------------------------------- Fin Nuestra Historia --------------------------------------->
 <script th:src="@{/js/script.js}"></script>
 </body>
 </html>

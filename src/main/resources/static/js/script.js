@@ -52,3 +52,83 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 3000);
 });
 
+// funciones para el carrusel de fotos que interactuen con las flechas
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Si es móvil, no ejecutamos este código
+    if (window.innerWidth <= 900) {
+        return;
+    }
+    const cards = document.querySelectorAll(".collection-card");
+    const prev = document.querySelector(".prev-btn");
+    const next = document.querySelector(".next-btn");
+
+    let inicio = 0;
+    const visibles = 3;
+
+    function mostrarColecciones() {
+
+        cards.forEach(card => card.style.display = "none");
+
+        for (let i = inicio; i < inicio + visibles && i < cards.length; i++) {
+            cards[i].style.display = "flex";
+        }
+
+        prev.disabled = inicio === 0;
+        next.disabled = inicio + visibles >= cards.length;
+    }
+
+    if (cards.length > 0) {
+
+        mostrarColecciones();
+
+        next.addEventListener("click", () => {
+            if (inicio + visibles < cards.length) {
+                inicio += visibles;
+                mostrarColecciones();
+            }
+        });
+
+        prev.addEventListener("click", () => {
+            if (inicio - visibles >= 0) {
+                inicio -= visibles;
+                mostrarColecciones();
+            }
+        });
+
+    }
+
+});
+
+//Ventana emergente sobre nosotros
+const abrir = document.getElementById("abrirHistoria");
+
+const modal = document.getElementById("modalHistoria");
+
+const cerrar = document.querySelector(".cerrar");
+console.log("abrir:", abrir);
+console.log("modal:", modal);
+console.log("cerrar:", cerrar);
+abrir.addEventListener("click",function(e){
+
+    e.preventDefault();
+
+    modal.style.display="flex";
+
+});
+
+cerrar.addEventListener("click",function(){
+
+    modal.style.display="none";
+
+});
+
+window.addEventListener("click",function(e){
+
+    if(e.target===modal){
+
+        modal.style.display="none";
+
+    }
+
+});
