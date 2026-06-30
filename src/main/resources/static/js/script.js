@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     icon.classList.remove("fa-xmark");
                     icon.classList.add("fa-bars");
                 }
+
             });
         });
     }
@@ -41,8 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () {
         const mensaje = document.getElementById("mensaje");
+        const mensajeError = document.getElementById('mensajeError')
         if (mensaje) {
             mensaje.style.display = "none";
         }
+        if (mensajeError) {
+            mensajeError.style.display = "none";
+        }
     }, 3000);
 });
+

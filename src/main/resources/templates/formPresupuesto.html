@@ -41,6 +41,7 @@
                 <p>Por favor, completa los siguientes datos y nos pondremos en contacto contigo en un plazo de 24-48 horas.</p>
             </div>
             <div th:if="${mensaje != null}" class='alert alert-success' th:text="${mensaje}" role='alert' id="mensaje"/>
+            <div th:if="${mensajeError != null}" class='alert alert-danger' th:text="${mensajeError}" role='alert' id="mensajeError"/>
             <form th:action="@{/Formulario}" method="POST" class="custom-form">
 
                 <div class="form-group-row">
@@ -64,13 +65,13 @@
                     <div class="form-input-group">
                         <label for="tipoMueble">¿Qué pieza te interesa?</label>
                         <div class="select-wrapper">
-                            <select id="tipoMueble" name="tipoMueble" required>
+                            <select id="tipoMueble" name="stock.id" required>
                                 <option value="" disabled selected>Selecciona una opción</option>
-                                <option value="mesa">Mesa de Comedor / Centro</option>
-                                <option value="dormitorio">Estructura de Cama / Cabecero</option>
-                                <option value="armario">Armario o Cajonera</option>
-                                <option value="espejo">Espejo a medida</option>
-                                <option value="otro">Otro proyecto personalizado</option>
+                                <option value="1">Mesa de Comedor / Centro</option>
+                                <option value="2">Estructura de Cama / Cabecero</option>
+                                <option value="3">Armario o Cajonera</option>
+                                <option value="4">Espejo a medida</option>
+                                <option value="5">Otro proyecto personalizado</option>
                             </select>
                         </div>
                     </div>
@@ -78,7 +79,7 @@
 
                 <div class="form-input-group">
                     <label for="detalles">Cuéntanos más sobre tu proyecto (Medidas, madera, ideas...)</label>
-                    <textarea id="detalles" name="detalles" rows="5" placeholder="Me gustaría una mesa de roble macizo de 180x90 cm con acabado natural..." required></textarea>
+                    <textarea id="detalles" name="descripcion" rows="5" placeholder="Me gustaría una mesa de roble macizo de 180x90 cm con acabado natural..." required></textarea>
                 </div>
 
                 <div class="form-checkbox-group">

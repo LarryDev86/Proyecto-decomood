@@ -54,47 +54,19 @@
     </div>
 
     <div class="collections-grid">
-        <a href="#" class="collection-card">
+        <a th:each="coleccion:${colecciones}" href="#" class="collection-card">
             <div class="card-img-wrapper">
-                <img th:src="@{/imagenes/mesa-comedor.png}" alt="Mesas">
+                <img th:src="@{'imagenes/'+ ${coleccion.imagen}}" th:alt="${coleccion.nombre}">
                 <div class="card-overlay"></div>
             </div>
             <div class="card-content">
                 <span>Colección</span>
-                <h3>Mesas</h3>
-                <div class="card-footer">
+                <h3 th:text="${coleccion.nombre}"></h3>
+                <div class=card-footer>
                     <span class="discover-text">Descubrir</span>
-                    <span class="arrow-icon"><i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="collection-card">
-            <div class="card-img-wrapper">
-                <img th:src="@{/imagenes/dormitorio.png}" alt="Dormitorios">
-                <div class="card-overlay"></div>
-            </div>
-            <div class="card-content">
-                <span>Colección</span>
-                <h3>Dormitorios</h3>
-                <div class="card-footer">
-                    <span class="discover-text">Descubrir</span>
-                    <span class="arrow-icon"><i class="fa-solid fa-arrow-right"></i></span>
-                </div>
-            </div>
-        </a>
-
-        <a href="#" class="collection-card">
-            <div class="card-img-wrapper">
-                <img th:src="@{/imagenes/espejo.png}" alt="Espejos">
-                <div class="card-overlay"></div>
-            </div>
-            <div class="card-content">
-                <span>Colección</span>
-                <h3>Espejos</h3>
-                <div class="card-footer">
-                    <span class="discover-text">Descubrir</span>
-                    <span class="arrow-icon"><i class="fa-solid fa-arrow-right"></i></span>
+                    <span class="arrow-icon">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
                 </div>
             </div>
         </a>
