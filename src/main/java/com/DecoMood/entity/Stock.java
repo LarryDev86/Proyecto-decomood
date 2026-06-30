@@ -14,6 +14,7 @@ public class Stock {
     @Column(name ="precio")
     private int precio;
     private String imagen;
+    private String descripcion;
 
     public Stock() {
     }
@@ -50,6 +51,14 @@ public class Stock {
         this.imagen = imagen;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     @Override
     public String toString() {
         return "Stock{" +
@@ -57,6 +66,7 @@ public class Stock {
                 ", nombre='" + nombre + '\'' +
                 ", precio=" + precio +
                 ", imagen='" + imagen + '\'' +
+                ", descripcion='" + descripcion + '\'' +
                 '}';
     }
 }

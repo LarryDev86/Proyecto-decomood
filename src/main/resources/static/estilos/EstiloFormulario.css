@@ -283,7 +283,25 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
+/*=====================================================
+            CTA BANNER PIE (COPYRIGHT)
+=====================================================*/
+.cta-banner-pie {
+    position: relative;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-light);
+    border-top: 1px solid var(--border-color);
+}
 
+.cta-banner-pie small {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-gray);
+    font-weight: 400;
+}
 /*=====================================================
                     RESPONSIVE
 =====================================================*/

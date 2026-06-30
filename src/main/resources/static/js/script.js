@@ -53,50 +53,76 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // funciones para el carrusel de fotos que interactuen con las flechas
-document.addEventListener("DOMContentLoaded", function () {
+function crearCarrusel(selectorCards, selectorPrev, selectorNext, visibles) {
 
-    // Si es móvil, no ejecutamos este código
+    // En móvil no hacemos nada
     if (window.innerWidth <= 900) {
         return;
     }
-    const cards = document.querySelectorAll(".collection-card");
-    const prev = document.querySelector(".prev-btn");
-    const next = document.querySelector(".next-btn");
+
+    const cards = document.querySelectorAll(selectorCards);
+    const prev = document.querySelector(selectorPrev);
+    const next = document.querySelector(selectorNext);
+
+    if (!cards.length || !prev || !next) {
+        return;
+    }
 
     let inicio = 0;
-    const visibles = 3;
 
-    function mostrarColecciones() {
+    function mostrar() {
 
-        cards.forEach(card => card.style.display = "none");
+        // Ocultamos todas
+        cards.forEach(card => {
+            card.style.display = "none";
+        });
 
+        // Mostramos solo las necesarias
         for (let i = inicio; i < inicio + visibles && i < cards.length; i++) {
-            cards[i].style.display = "flex";
+            cards[i].style.display = "";
         }
 
+        // Activar / desactivar botones
         prev.disabled = inicio === 0;
         next.disabled = inicio + visibles >= cards.length;
     }
 
-    if (cards.length > 0) {
+    mostrar();
 
-        mostrarColecciones();
+    next.addEventListener("click", function () {
 
-        next.addEventListener("click", () => {
-            if (inicio + visibles < cards.length) {
-                inicio += visibles;
-                mostrarColecciones();
-            }
-        });
+        if (inicio + visibles < cards.length) {
+            inicio += visibles;
+            mostrar();
+        }
 
-        prev.addEventListener("click", () => {
-            if (inicio - visibles >= 0) {
-                inicio -= visibles;
-                mostrarColecciones();
-            }
-        });
+    });
 
-    }
+    prev.addEventListener("click", function () {
+
+        if (inicio - visibles >= 0) {
+            inicio -= visibles;
+            mostrar();
+        }
+
+    });
+}
+//Llamada al metodo del carrusel
+document.addEventListener("DOMContentLoaded", function () {
+
+    crearCarrusel(
+        ".collection-card",
+        ".prev-btn",
+        ".next-btn",
+        3
+    );
+
+    crearCarrusel(
+        ".product-card",
+        ".products-prev",
+        ".products-next",
+        4
+    );
 
 });
 
