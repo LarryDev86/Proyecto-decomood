@@ -14,6 +14,7 @@ public class Stock {
     @Column(name ="precio")
     private int precio;
     private String imagen;
+    @Column(name="descripcion", length = 1000)
     private String descripcion;
 
     public Stock() {
