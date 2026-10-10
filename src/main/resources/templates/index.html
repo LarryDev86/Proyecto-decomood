@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DecoMood</title>
+    <meta name="description" content="Muebles artesanales fabricados en madera natural.">
+    <link rel="stylesheet" th:href="@{/estilos/EstiloWeb.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<header class="header">
+    <div class="logo">DECOMOOD</div>
+    <nav class="nav-desktop">
+        <a href="#">Inicio</a>
+        <a href="#colecciones">Colecciones</a>
+        <a href="https://www.instagram.com/deco_mood.ccl?igsh=dGM1cjFsczVqejJ1">Síguenos</a>
+        <a href="https://wa.me/34603636742" target="_blank">Contacto</a>
+        <a class="catalogo catalogo-mobile" th:href="@{/imagenes/catalogo.pdf}">Catálogo</a>
+    </nav>
+    <div class="header-actions">
+        <div class="menu-mobile">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div>
+</header>
+<section class="hero">
+    <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="subtitle">MUEBLES ARTESANALES</span>
+            <h1>Creamos hogares<br>con alma</h1>
+            <p>Diseñamos y fabricamos muebles de madera natural con procesos artesanales y materiales sostenibles.</p>
+            <div class="hero-buttons">
+                <a href="#colecciones" class="btn-discover">Descubrir colección</a>
+            </div>
+        </div>
+</section>
+<section class="collections" id="colecciones">
+    <div class="section-header">
+        <div class="header-text">
+            <span class="section-subtitle">COLECCIONES</span>
+            <h2>Explora nuestras colecciones</h2>
+        </div>
+        <div class="slider-arrows">
+            <button class="arrow-btn prev-btn">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="arrow-btn next-btn">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    <div class="collections-grid">
+        <a th:each="coleccion:${colecciones}" href="" class="collection-card">
+            <div class="card-img-wrapper">
+                <img th:src="@{'imagenes/'+ ${coleccion.imagen}}" th:alt="${coleccion.nombre}">
+                <div class="card-overlay"></div>
+            </div>
+            <div class="card-content">
+                <span>Colección</span>
+                <h3 th:text="${coleccion.nombre}"></h3>
+            </div>
+        </a>
+    </div>
+</section>
+<section class="about-section" id="nosotros">
+    <div class="about-container">
+        <div class="about-image">
+            <img th:src="@{/imagenes/armario.png}" alt="Artesanía DecoMood">
+        </div>
+        <div class="about-content">
+            <span class="section-subtitle">DECOMOOD</span>
+            <h2>Artesanía, naturaleza<br>y diseño.</h2>
+            <p class="about-text-lead">Creemos en la belleza de lo natural, en el valor de lo hecho a mano y en la importancia de crear muebles que cuenten historias.</p>
+            <p class="about-text-sub">Cada pieza es única, trabajando con dedicación por artesanos expertos que cuidan cada detalle.</p>
+            <a href="#" class="btn-outline"  id="abrirHistoria">
+                Conoce nuestra historia
+            </a>
+        </div>
+    </div>
+</section>
+<section class="products-section">
+    <div class="section-header">
+        <div class="header-text">
+            <span class="section-subtitle">PRODUCTOS DESTACADOS</span>
+            <h2>Piezas que enamoran</h2>
+        </div>
+        <div class="slider-arrows">
+            <button class="arrow-btn products-prev">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="arrow-btn products-next">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    <div class="products-grid">
+        <a th:each="coleccion:${colecciones}" href="#" class="product-card">
+            <div class="product-img-wrapper">
+                <img th:src="@{'/imagenes/'+${coleccion.imagen}}" th:alt="${coleccion.nombre}">
+            </div>
+            <div class="product-info">
+                <div class="product-title-row">
+                    <h3 th:text="${coleccion.nombre}"></h3>
+                    <span class="product-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+                </div>
+                <div class="section-subtitle">
+                    <h3 th:text="${coleccion.nombre}"></h3>
+                    <div th:if="${coleccion.precio == 0}">
+                        <h3 class="cta-subtitle">Desde-Según medidas</h3>
+                    </div>
+                    <h3 class="cta-subtitle" th:if="${coleccion.precio != 0}"
+                        th:text="'Desde-'+${coleccion.precio}+'€'"></h3>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</section>
+<section class="cta-banner">
+    <div class="cta-overlay"></div>
+    <img class="cta-bg-img" th:src="@{/imagenes/dormitorio.png}" alt="Proyectos a medida">
+    <div class="cta-container">
+        <div class="cta-content">
+            <span class="cta-subtitle">HACEMOS REALIDAD TUS IDEAS</span>
+            <h2>Personalizamos cada proyecto a tu medida</h2>
+            <a th:href="@{/presupuesto}" class="btn-cta">Solicitar presupuesto</a>
+        </div>
+    </div>
+</section>
+<!-- copyryde -->
+<section class="cta-banner-pie">
+    <small>
+        © 2026 Deco_mood.ccl   -   Todos los derechos reservados.
+    </small>
+</section>
+<!--------------------------------------- Nuestra Historia --------------------------------------->
+<div id="modalHistoria" class="modal">
+    <div class="modal-content">
+        <span class="cerrar">&times;</span>
+        <div class="modal-galeria">
+            <img src="/imagenes/fundadores.png" alt="Fundadores">
+        </div>
+        <div class="modal-texto">
+            <h2>Nuestra historia</h2>
+            <p>
+                DecoMood nació de la pasión por la madera y el diseño artesanal.
+                Lo que comenzó como un pequeño taller familiar se convirtió en un
+                proyecto donde cada mueble se fabrica con dedicación y materiales
+                naturales.
+            </p>
+            <p>
+                Nuestro objetivo siempre ha sido crear piezas únicas,
+                alejándonos de la fabricación en serie y cuidando cada detalle
+                del proceso.
+            </p>
+        </div>
+        <div class="modal-galeria">
+            <img src="/imagenes/fundadores-2.png" alt="Proceso artesanal">
+        </div>
+    </div>
+</div>
+<!--------------------------------------- Fin Nuestra Historia --------------------------------------->
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

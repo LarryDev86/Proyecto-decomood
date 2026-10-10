@@ -1,0 +1,992 @@
+/* CSS Estilo WEB/
+
+/*=====================================================
+                    VARIABLES
+=====================================================*/
+:root {
+    --bg-light: #FDFBF7;       /* El fondo crema suave de la imagen */
+    --text-dark: #1A1A1A;      /* Negro mate elegante */
+    --text-gray: #666666;
+    --border-color: #E0DCD5;
+    --white: #ffffff;
+    --transition-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/*=====================================================
+                    RESET
+=====================================================*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*=====================================================
+            HEADER (MENÚ OCULTO GLOBAL)
+=====================================================*/
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    background: transparent;
+}
+
+.logo {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    color: var(--white);
+    font-weight: 500;
+}
+
+/* El botón de tres líneas (hamburguesa) - Visible en todas las pantallas */
+.menu-mobile {
+    display: block !important;
+    color: var(--white) !important;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1000; /* Por encima de la cortina para poder cerrar */
+    position: relative;
+}
+
+.menu-mobile i {
+    transition: transform 0.3s ease, color 0.3s;
+}
+
+/* Panel de navegación que actúa como cortina (Oculto para PC, Tablet y Móvil) */
+.nav-desktop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(26, 26, 26, 0.98); /* Negro mate de lujo */
+
+    /* Estado inicial: oculto arriba */
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: transform 0.5s var(--transition-smooth), opacity 0.5s;
+    z-index: 998;
+}
+
+/* Cuando se pulsa el botón, JavaScript inyecta esta clase y el menú baja */
+.nav-desktop.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enlaces dentro del menú desplegable */
+.nav-desktop a {
+    color: var(--white) !important;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 400;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.nav-desktop a:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+/* Botón del catálogo integrado dentro del menú desplegable */
+.nav-desktop .catalogo-mobile {
+    display: inline-block !important;
+    margin-top: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    padding: 12px 32px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.nav-desktop .catalogo-mobile:hover {
+    background: var(--white);
+    color: var(--text-dark) !important;
+}
+
+/* Ocultamos por completo el catálogo antiguo que flotaba fuera */
+.catalogo-desktop {
+    display: none !important;
+}
+
+/*=====================================================
+                    HERO SECTION
+=====================================================*/
+.hero {
+    position: relative;
+    height: 100vh;
+    background-image: url("../imagenes/mesa-comedor.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5%;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.5) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    color: var(--white);
+    max-width: 650px;
+    margin-top: 60px;
+}
+
+.hero-content .subtitle {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.hero-content h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 5.5rem;
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.hero-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 480px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 40px;
+}
+
+.btn-discover {
+    display: inline-block;
+    background: var(--white);
+    color: var(--text-dark);
+    padding: 16px 32px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: transform 0.3s var(--transition-smooth), box-shadow 0.3s;
+}
+
+.btn-discover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.hero-footer {
+    position: absolute;
+    bottom: 50px;
+    left: 5%;
+    right: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+    color: var(--white);
+}
+
+.hero-slider-indicators {
+    display: flex;
+    gap: 30px;
+}
+
+.hero-slider-indicators span {
+    font-size: 14px;
+    letter-spacing: 1px;
+    opacity: 0.4;
+    position: relative;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.hero-slider-indicators span.active {
+    opacity: 1;
+}
+
+.hero-slider-indicators span.active::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--white);
+}
+
+.hero-video-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.play-icon {
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.hero-video-link:hover .play-icon {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--white);
+}
+
+/*=====================================================
+                    COLECCIONES
+=====================================================*/
+.collections {
+    padding: 120px 5%;
+    background-color: var(--bg-light);
+}
+
+.collections .section-header, .products-section .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 60px;
+}
+
+.section-subtitle {
+    display: block;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.collections h2, .products-section h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 3.2rem;
+    font-weight: 400;
+    color: var(--text-dark);
+}
+
+.slider-arrows {
+    display: flex;
+    gap: 12px;
+}
+
+.arrow-btn {
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--text-dark);
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.arrow-btn:hover {
+    border-color: var(--text-dark);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.collections-grid {
+    display: flex;
+    gap: 30px;
+    overflow: hidden;
+}
+
+.collection-card {
+    flex: 0 0 calc((100% - 60px) / 3);
+}
+
+.collection-card {
+    position: relative;
+    height: 520px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px;
+    color: var(--white);
+}
+
+.card-img-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transition: transform 0.6s var(--transition-smooth);
+}
+
+.collection-card:hover .card-img-wrapper {
+    transform: scale(1.04);
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 100%);
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+}
+
+.card-content span {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.card-content h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.4rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s, transform 0.4s var(--transition-smooth);
+}
+
+.collection-card:hover .card-footer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.discover-text {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.arrow-icon {
+    font-size: 11px;
+}
+
+/*=====================================================
+            SECCIÓN SOBRE NOSOTROS (ABOUT)
+=====================================================*/
+.about-section {
+    padding: 80px 5% 120px 5%;
+    background-color: var(--bg-light);
+}
+
+.about-container {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.about-image, .about-content {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.about-image {
+    padding-right: 6%;
+    height: 580px;
+}
+
+.about-image img {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+}
+
+.about-content {
+    padding-left: 4%;
+}
+
+.about-content h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+}
+
+.about-text-lead {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.about-text-sub {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-gray);
+    margin-bottom: 40px;
+}
+
+.btn-outline {
+    display: inline-block;
+    border: 1px solid var(--text-dark);
+    color: var(--text-dark);
+    padding: 15px 30px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn-outline:hover {
+    background: var(--text-dark);
+    color: var(--white);
+}
+
+/*=====================================================
+            PRODUCTOS DESTACADOS
+=====================================================*/
+.products-section {
+    padding: 60px 5% 120px 5%;
+    background-color: var(--bg-light);
+}
+.products-grid{
+    display:flex;
+    gap:25px;
+    overflow:hidden;
+}
+
+.product-card{
+    flex:0 0 calc((100% - 75px)/4);
+}
+
+.product-card {
+    cursor: pointer;
+}
+
+.product-img-wrapper{
+    aspect-ratio: 4/5;
+    height:auto;
+}
+
+.product-img-wrapper img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.product-card:hover .product-img-wrapper img {
+    transform: scale(1.03);
+}
+
+.product-info {
+    padding-top: 5px;
+}
+
+.product-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.product-title-row h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+}
+
+.product-arrow {
+    font-size: 12px;
+    color: var(--text-dark);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.product-card:hover .product-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.product-price {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/*=====================================================
+            CTA BANNER INFERIOR
+=====================================================*/
+.cta-banner {
+    position: relative;
+    height: 340px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta-bg-img {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(1px);
+}
+
+.cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 2;
+}
+
+.cta-container {
+    position: relative;
+    z-index: 3;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cta-content {
+    text-align: center;
+    color: var(--white);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-subtitle {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: block;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.cta-content h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.btn-cta {
+    display: inline-block;
+    background: var(--white);
+    color: var(--text-dark);
+    padding: 14px 28px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: transform 0.3s;
+}
+
+.btn-cta:hover {
+    transform: translateY(-2px);
+}
+
+.cta-arrow-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    transition: border-color 0.3s;
+}
+
+.cta-arrow-btn:hover {
+    border-color: var(--white);
+}
+
+.cta-dots {
+    position: absolute;
+    bottom: 25px;
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+}
+
+.cta-dots .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+}
+
+.cta-dots .dot.active {
+    background: var(--white);
+}
+/*=====================================================
+            Modal sobre nosotros
+=====================================================*/
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.6);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.modal-content{
+
+    width:80%;
+
+    max-width:900px;
+
+    background:white;
+
+    border-radius:10px;
+
+    display:flex;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+.modal-galeria{
+
+    width:45%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    padding:25px;
+
+}
+
+.modal-texto{
+
+    width:55%;
+
+    padding:45px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+.modal-texto p{
+
+    line-height:1.8;
+
+    margin-bottom:20px;
+
+}
+.modal-texto h2{
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:3rem;
+
+    margin-bottom:25px;
+
+}
+.cerrar{
+
+    position:absolute;
+
+    top:20px;
+
+    right:25px;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+}
+/*=====================================================
+            CTA BANNER PIE (COPYRIGHT)
+=====================================================*/
+.cta-banner-pie {
+    position: relative;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-light);
+    border-top: 1px solid var(--border-color);
+}
+
+.cta-banner-pie small {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-gray);
+    font-weight: 400;
+}
+
+/*=====================================================
+            RESPONSIVE ADICIONAL
+=====================================================*/
+@media(max-width: 1200px) {
+    .hero-content h1 { font-size: 4.5rem; }
+    .collections h2, .products-section h2 { font-size: 2.8rem; }
+    .collection-card { height: 450px; padding: 30px; }
+}
+
+@media(max-width:900px){
+
+    .products-grid{
+
+        display:flex;
+        overflow-x:auto;
+        gap:20px;
+
+        scroll-snap-type:x mandatory;
+
+        scrollbar-width:none;
+
+        -webkit-overflow-scrolling:touch;
+
+    }
+
+    .products-grid::-webkit-scrollbar{
+        display:none;
+    }
+
+    .product-card{
+
+        flex:0 0 95%;
+        scroll-snap-align:center;
+
+    }
+
+}
+
+@media(max-width: 900px) {
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .collections .section-header,
+    .products-section .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    /* Ocultamos las flechas */
+    .slider-arrows {
+        display: none;
+    }
+
+    /* Carrusel horizontal */
+    .collections-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 20px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .collections-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Una tarjetas visibles */
+    .collection-card {
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+    }
+
+    .card-footer {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/*Regla para que no desborde
+@media(max-width:1024px){
+    .about-image,
+    .about-content{
+        display:block;
+        width:100%;
+    }
+}*/
+@media (max-width:1024px){
+
+    .about-container{
+        display:flex;
+        flex-direction:column;
+    }
+
+    .about-image,
+    .about-content{
+        display:block;
+        width:100%;
+        padding:0;
+    }
+
+    .about-image{
+        height:auto;
+        margin-bottom:30px;
+    }
+
+    .about-image img{
+        width:100%;
+        height:auto;
+        object-fit:cover;
+    }
+
+    .about-content{
+        text-align:left;
+    }
+
+    .about-content h2{
+        font-size:2.5rem;
+        line-height:1.2;
+        margin-bottom:20px;
+    }
+
+    .about-text-lead{
+        font-size:15px;
+        line-height:1.6;
+    }
+
+    .about-text-sub{
+        font-size:14px;
+        line-height:1.6;
+    }
+
+}
+/* Ajustes finos para pantallas móviles */
+@media (max-width:768px){
+
+    .modal-content{
+        width:95%;
+        max-height:95vh;
+        overflow-y:auto;
+
+        display:flex;
+        flex-direction:column;
+    }
+
+    .modal-galeria{
+        width:100%;
+        padding:30px;
+        display:flex;
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .modal-galeria img{
+        width:100%;
+        height:220px;
+        object-fit:cover;
+        border-radius:8px;
+    }
+
+    .modal-texto{
+        width:100%;
+        padding:0 20px 20px 20px;
+    }
+
+    .modal-texto h2{
+        font-size:2.2rem;
+        margin-bottom:20px;
+        text-align:center;
+    }
+
+    .modal-texto p{
+        font-size:15px;
+        line-height:1.7;
+        text-align:justify;
+    }
+
+    .cerrar{
+        top:15px;
+        right:15px;
+        font-size:28px;
+    }
+
+}
