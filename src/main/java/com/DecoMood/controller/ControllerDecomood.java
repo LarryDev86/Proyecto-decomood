@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
+
 @Controller
 public class ControllerDecomood {
 
@@ -22,10 +24,11 @@ public class ControllerDecomood {
     private UsuarioService usuarioService;
     @Autowired
     private StrockService strockService;
-
+    private int fecha = LocalDate.now().getYear();
     @GetMapping("/")
     public String indice(Model modelo){
         modelo.addAttribute("colecciones",strockService.listarStocks());
+        modelo.addAttribute("year",fecha);
     return "index";
     }
 
@@ -39,12 +42,14 @@ public class ControllerDecomood {
         }else{
             modelo.addAttribute("mensajeError","El correo no es correcto!");
         }
+        modelo.addAttribute("year",fecha);
         return "formPresupuesto";
     }
 
     @GetMapping("/presupuesto")
     public String hacerPresupuesto(Model modelo){
         modelo.addAttribute("muebles",strockService.listarStocks());
+        modelo.addAttribute("year",fecha);
         return "formPresupuesto";
     }
 

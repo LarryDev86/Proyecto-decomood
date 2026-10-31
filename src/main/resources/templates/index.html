@@ -6,6 +6,7 @@
     <title>DecoMood</title>
     <meta name="description" content="Muebles artesanales fabricados en madera natural.">
     <link rel="stylesheet" th:href="@{/estilos/EstiloWeb.css}">
+    <link rel="icon" th:href="@{/imagenes/logo-decomood.png}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -136,7 +137,7 @@
 <!-- copyryde -->
 <section class="cta-banner-pie">
     <small>
-        © 2026 Deco_mood.ccl   -   Todos los derechos reservados.
+        © <span th:text="${year}"></span> Deco_mood.ccl   -   Todos los derechos reservados.
     </small>
 </section>
 <!--------------------------------------- Nuestra Historia --------------------------------------->
